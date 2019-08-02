@@ -14,7 +14,7 @@ export default class CustomHeader extends Component {
         return(
             <Header style={styles.headerSec}>
             <Left style={styles.left}>
-                <TouchableOpacity
+                {!this.props.back && < TouchableOpacity
                 onPress={Actions.drawerOpen}
                 style={styles.backArrow}
                 >
@@ -25,7 +25,14 @@ export default class CustomHeader extends Component {
                     resizeMode: "contain"
                 }}
                 /> 
-                </TouchableOpacity>
+                </TouchableOpacity>}
+
+                {this.props.back && < TouchableOpacity
+                onPress={() => Actions.pop()}
+                style={styles.backArrow}
+                >
+                <Icon name="arrow-back" style={styles.headerIcon} /> 
+                </TouchableOpacity>}
             </Left>
             <Body style={styles.body}>
                 <Text style={styles.textTitle}>{this.props.title}</Text> 

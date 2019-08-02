@@ -17,11 +17,11 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     marginLeft: Fonts.moderateScale(15),
     textAlign: 'center',
-    //////fontFamily: Fonts.type.sfuiDisplayLight,
+    marginTop:5
   },
   icons:{
     color:'#1481E0', 
-    fontSize:30
+    fontSize:25
   },
 });
 export default styles;

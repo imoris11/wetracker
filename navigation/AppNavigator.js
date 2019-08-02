@@ -16,6 +16,8 @@ import Home from '../screens/Home';
 import History from '../screens/History';
 import Assets from '../screens/Assets';
 import Settings from '../screens/Settings';
+import Geofencing from '../screens/Geofencing';
+import Speed from '../screens/Speed';
 
 const reducerCreate = params => {
   const defaultReducer = new Reducer(params);
@@ -37,17 +39,18 @@ export default class App extends Component{
                 hideNavBar
                 key="root"
               >
-                <Scene key='login' component={Login} />
+                <Scene key='login' initial component={Login} />
                 <Drawer
-                  initial
                   hideNavBar
                   key="drawer"
                   contentComponent={DrawerContent}
                 >
-                <Scene initial key='home' component={Home} hideNavBar />
+                <Scene key='home' component={Home} hideNavBar />
                 <Scene  key='history' component={History} hideNavBar />
                 <Scene  key='assets' component={Assets} hideNavBar />
                 <Scene  key='settings' component={Settings} hideNavBar />
+                <Scene  key='geofencing' component={Geofencing} hideNavBar />
+                <Scene  key='speed' component={Speed} hideNavBar />
               </Drawer>
               </Stack>
             </Lightbox>

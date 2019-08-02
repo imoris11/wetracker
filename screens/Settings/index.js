@@ -16,29 +16,29 @@ export default function Assets () {
       <Content>
         <View style={styles.container}>
         <View style={{marginLeft:20, marginTop:30}}>
-            <TouchableOpacity onPress={Actions.settings}>
+            <TouchableOpacity onPress={Actions.geofencing}>
               <View style={styles.listrow}>
-                  <Icon type="FontAwesome" name="cog" style={styles.icons} />
+                  <Icon type="FontAwesome" name="map" style={styles.icons} />
                   <Text style={styles.rowtxt}>Geofencing</Text>
             </View>
             </TouchableOpacity>
  
-          <TouchableOpacity onPress={() => alert('Alert device')} >
+          <TouchableOpacity onPress={Actions.speed} >
             <View style={styles.listrow}>
-              <Icon type='FontAwesome5' name="bell" style={styles.icons} />
+              <Icon type='FontAwesome' name="dashboard" style={styles.icons} />
               <Text style={styles.rowtxt}>Speed limit</Text>
             </View>
           </TouchableOpacity>
           
-          <TouchableOpacity onPress={() => this.logout()} >
+          <TouchableOpacity onPress={() => alert('Alert device')} >
             <View style={styles.listrow}>
-              <Icon type="MaterialCommunityIcons" name="logout" style={styles.icons} />
+              <Icon type="MaterialCommunityIcons" name="bell" style={styles.icons} />
               <Text style={styles.rowtxt}>SOS alert</Text>
             </View>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => this.logout()} >
             <View style={styles.listrow}>
-              <Icon type="MaterialCommunityIcons" name="logout" style={styles.icons} />
+              <Icon type="MaterialCommunityIcons" name="thermometer" style={styles.icons} />
               <Text style={styles.rowtxt}>Temperature Monitor</Text>
             </View>
           </TouchableOpacity>
