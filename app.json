@@ -4,6 +4,14 @@
     "slug": "wetracker",
     "privacy": "public",
     "sdkVersion": "34.0.0",
+    "android": {
+      "package": "com.wetracker.app",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyBb6fZ9_EZN_vU4xnssDaOk_KmrvNvCsws"
+        }
+      }
+    },
     "platforms": [
       "ios",
       "android",
@@ -24,7 +32,11 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.wetracker.app",
+      "config": {
+        "googleMapsApiKey": "AIzaSyBb6fZ9_EZN_vU4xnssDaOk_KmrvNvCsws"
+      }
     }
   }
 }

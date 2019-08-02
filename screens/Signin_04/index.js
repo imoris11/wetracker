@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { AppLoading } from 'expo';
+import { Actions } from 'react-native-router-flux';
+
 import {
   Text,
   View,
@@ -58,7 +60,7 @@ export default class Signin extends Component {
     };
     //Call login API and redirect on success
     AsyncStorage.setItem('user_id', '1');
-    this.props.navigation.navigate("Drawer")
+    Actions.drawer();
   }
   render() {
 

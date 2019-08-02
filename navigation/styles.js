@@ -8,9 +8,7 @@ module.exports = StyleSheet.create({
     backgroundColor: 'white',
   },
   drawercontainer:{
-    width: Metrics.WIDTH,
-    height: Metrics.HEIGHT,
-    backgroundColor: 'white',
+    flex:1,
     padding: 0,
   },
   headerSec: {
@@ -41,9 +39,10 @@ module.exports = StyleSheet.create({
 		backgroundColor: 'transparent'
   },
 	textTitle: {
-    color: "#fff",
-    fontSize: Fonts.moderateScale(16),
+    color: "#000",
+    fontSize: Fonts.moderateScale(25),
     marginTop: 5,
+    fontWeight:'bold',
     alignSelf: 'center',
 	  //////fontFamily: Fonts.type.sfuiDisplaySemibold,
   },
@@ -61,59 +60,115 @@ module.exports = StyleSheet.create({
     textAlign: 'center',
     backgroundColor: 'transparent',
     top:(Metrics.HEIGHT * 0.44),
-    //////fontFamily: Fonts.type.sfuiDisplayRegular,
   },
 
 
 
   /*Menu Section START*/
   menuContainer:{
-    backgroundColor: Colors.gray,
+    backgroundColor: Colors.snow,
     width: Metrics.WIDTH,
     height: Metrics.HEIGHT,
-    paddingTop: Fonts.moderateScale(25),
+    paddingTop: Fonts.moderateScale(30),
   },
   menucontrolPanel: {
-    // flex: 1,
     paddingTop: Fonts.moderateScale(25),
-    paddingLeft: Fonts.moderateScale(20),
   },
   userProfiles:{
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
+    backgroundColor: '#F4F4F4',
+    padding:20
   },
   userImageStyle:{
-    width: (Metrics.WIDTH) * 0.20,
-    height: (Metrics.WIDTH) * 0.20,
-    borderRadius: (Metrics.WIDTH)* 0.10,
-    borderWidth: 2,
-    borderColor: Colors.snow,
-    // marginLeft: 40
+    width: (Metrics.WIDTH) * 0.15,
+    height: (Metrics.WIDTH) * 0.15,
+    borderRadius: (Metrics.WIDTH)* 0.075,
   },
   userDetailsStyle:{
     backgroundColor: 'transparent',
-    alignItems: 'flex-start',
     height: 50,
+    alignItems:'center',
     justifyContent: 'center',
-    marginLeft: 10
+    marginLeft: 10,
   },
   userDetailsText:{
-    fontSize: Fonts.moderateScale(15),
-    color: Colors.snow,
+    fontSize: Fonts.moderateScale(16),
+    fontWeight: 'bold'
+  },
+  userid: {
+    fontSize: Fonts.moderateScale(10)
+  },
+  deviceAdded: {
+    backgroundColor: Colors.snow,
+    padding:12
+  },
+  device: {
+    padding:13,
+    backgroundColor: 'rgba(0, 103, 193, 0.1)',
+    borderTopWidth:0.4,
+    borderColor:'lightgrey',
+    flexDirection:'row',
+    justifyContent:'space-between'
+  },
+  inactive:{
+    backgroundColor:'red'
+  },
+  sleeping:{
+    backgroundColor:'orange'
+  },
+  success:{
+    backgroundColor:'green'
+  },
+  circle: {
+    width:10, 
+    height:10, 
+    borderRadius:5, 
+  },
+  addContainer:{
+    backgroundColor: '#0067C1',
+    padding:5,
+    paddingLeft:10,
+    paddingRight:10
+  },
+  addBorder:{
+     borderBottomWidth:0.2, 
+     borderColor:'lightgrey',
+  },
+  add:{
+    color: '#0067C1',
+    fontSize: Fonts.moderateScale(16),
+    backgroundColor: 'transparent',
+    fontWeight: 'bold',
+    paddingTop:15,
+    marginLeft: Fonts.moderateScale(15),
+    textAlign: 'center',
+    //////fontFamily: Fonts.type.sfuiDisplayLight,
+  },
+  addIcon:{
+    color:'white', 
+    fontSize:40, 
+    fontWeight:'bold'
+  },
+  icons:{
+    color:'#000', 
+    fontSize:20
+  },
+  headerIcon:{
+    color: '#0067C1'
   },
   menumainview:{
-    marginLeft: Fonts.moderateScale(25),
-    marginTop: Fonts.moderateScale(25),
+    backgroundColor:Colors.gray,
   },
   listrow:{
     backgroundColor: 'transparent',
     flexDirection: 'row',
-    marginBottom: 15,
+    marginBottom: 20,
   },
   rowtxt:{
     color: Colors.black,
-    fontSize: Fonts.moderateScale(18),
+    fontSize: Fonts.moderateScale(14),
     backgroundColor: 'transparent',
     marginLeft: Fonts.moderateScale(15),
     textAlign: 'center',
@@ -134,5 +189,8 @@ module.exports = StyleSheet.create({
     fontSize: Fonts.moderateScale(13),
   },
   /*Menu Section END*/
+
+  
+
 
 });

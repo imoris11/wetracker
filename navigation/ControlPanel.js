@@ -5,14 +5,13 @@ import {
   TouchableOpacity,
   AsyncStorage, 
   Alert,
-  Share 
+  Image 
 } from 'react-native';
-import { Container, Content } from 'native-base';
+import { Container, Content, Icon } from 'native-base';
 import styles from './styles';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
-import MaterialIcons from "react-native-vector-icons/MaterialIcons";
+import { openSmsUrl } from '../extra/sms';
+import { Actions } from 'react-native-router-flux';
 
 export default class ControlPanel extends Component {
   constructor (props){
@@ -32,61 +31,86 @@ export default class ControlPanel extends Component {
      }
   }
 
-  onShare = () => {
-    try {
-      const result =   Share.share({
-        message:
-          'Hi Friend. Get the the iChurch App on playstore now ! https://playstore.com/url',
-      })
-
-      if (result.action === Share.sharedAction) {
-        if (result.activityType) {
-          // shared with activity type of result.activityType
-        } else {
-          // shared
-        }
-      } else if (result.action === Share.dismissedAction) {
-        // dismissed
-      }
-    } catch (error) {
-    //  alert(error.message);
-    }
-  };
 
 logout = async () => {
    AsyncStorage.removeItem('user_id');
    this.setState({ loggedIn: false});
-   Alert.alert("Successfully logged out");
+   Actions.login();
 }
   
   render() {
-    const { loggedIn } = this.state;
     return (
-      <Container style={styles.menuContainer}>
+      <Container style={styles.container}>
         <Content style={styles.menucontrolPanel}>
-          <View style={styles.userProfiles}>
-             <View style={styles.userDetailsStyle}>
-               <Text style={styles.userDetailsText}>WeTracker</Text>
-             </View>
+          <TouchableOpacity onPress={Actions.home}>
+            <View style={styles.userProfiles}>
+              <Image style={styles.userImageStyle} resizeMode={'cover'} source={require('../assets/images/richard.jpeg')} />
+              <View style={styles.userDetailsStyle}>
+                <Text style={styles.userDetailsText}>John Smith</Text>
+                <Text style={styles.userId}>ID: John123</Text>
+              </View>
+            </View>
+          </TouchableOpacity>
+          <View style={styles.deviceAdded}>
+              <Text style={styles.userDetailsText}>Device Added</Text>
           </View>
-          <View style={styles.menumainview}>
-            <TouchableOpacity onPress={() => {
-              this.props.navigation.navigate('DrawerSocial');
-              this.props.closeDrawer(); 
-              } } >
-              <View style={styles.listrow}>
-                <Ionicons name="md-home" color="#ffffff" size={20} />
-                <Text style={styles.rowtxt}>  Home</Text>
+          <View style={styles.device}>
+            <Text>Ford Edge 2019</Text>
+            <View style={[styles.circle, styles.inactive]}></View>
+          </View>
+          <View style={styles.device}>
+            <Text>Truck</Text>
+            <View style={[styles.circle, styles.sleeping]}></View>
+          </View>
+          <View style={styles.device}>
+            <Text>Power Bike</Text>
+            <View style={[styles.circle, styles.success]}></View>
+          </View>
+          <TouchableOpacity onPress={Actions.assets} >
+            <View style={[styles.listrow, styles.addBorder]}>
+              <View style={styles.addContainer}>
+              <Icon name="ios-add" style={styles.addIcon} />
               </View>
-            </TouchableOpacity>
-          
+              <Text style={styles.add}>Add Asset</Text>
+            </View>
+          </TouchableOpacity>
 
-            {loggedIn && <TouchableOpacity onPress={() => this.logout()}>
+          <View style={{marginLeft:10}}>
+            <TouchableOpacity onPress={()=> openSmsUrl('09037233559', 'This is another messaging')}>
               <View style={styles.listrow}>
-                <SimpleLineIcons name="logout" color='#ffffff' size={20} />
-                <Text style={styles.rowtxt}>  Log out</Text>
-              </View>
-            </TouchableOpacity>}
+                <Icon type="MaterialIcons" style={styles.icons} name="message"  />
+               <Text style={styles.rowtxt}>  Messaging</Text>
+            </View>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={Actions.settings}>
+              <View style={styles.listrow}>
+                  <Icon type="FontAwesome" name="cog" style={styles.icons} />
+                  <Text style={styles.rowtxt}>  Settings</Text>
+            </View>
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={Actions.history} >
+                <View style={styles.listrow}>
+                  <SimpleLineIcons name="chart" style={styles.icons} />
+                  <Text style={styles.rowtxt}>  Tracking History</Text>
+                </View>
+            </TouchableOpacity>
+ 
+          <TouchableOpacity onPress={() => alert('Alert device')} >
+            <View style={styles.listrow}>
+              <Icon type='FontAwesome5' name="bell" style={styles.icons} />
+              <Text style={styles.rowtxt}>  Alert</Text>
+            </View>
+          </TouchableOpacity>
+          
+          <TouchableOpacity onPress={() => this.logout()} >
+            <View style={styles.listrow}>
+              <Icon type="MaterialCommunityIcons" name="logout" style={styles.icons} />
+              <Text style={styles.rowtxt}>  Logout</Text>
+            </View>
+          </TouchableOpacity>
+
+         
           </View>
         </Content>
       </Container>

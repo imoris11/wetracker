@@ -10,13 +10,15 @@ import {
   Right,
   Header,
   Left,
-  Body
+  Icon,
+  Body,
+  Button
 } from "native-base";
 const drawerStyles = {
   drawer: {
-    shadowColor: "#000000",
+    shadowColor: "red",
     shadowOpacity: 0.8,
-    shadowRadius: 0
+    shadowRadius: 20
   }
 
 };
@@ -25,15 +27,16 @@ import MyControlPanel from "./ControlPanel";
 import tweens from "./tweens";
 import styles from "./styles";
 import { Metrics } from '../Themes';
-import Home from '../screens/HomeScreen';
- 
+import Home from '../screens/Home';
+import { openSmsUrl } from '../extra/sms';
+
 export default class DrawerSocial extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
       drawerType: "static",
-      openDrawerOffset: 0.2,
-      closedDrawerOffset: -3,
+      openDrawerOffset: 100,
+      closedDrawerOffset: 0,
       panOpenMask: 0.1,
       relativeDrag: false,
       panThreshold: 0.25,
@@ -103,7 +106,12 @@ export default class DrawerSocial extends Component {
           panThreshold={this.state.panThreshold}
           content={controlPanel}
           styles={drawerStyles}
-          tweenHandler={this.tweenHandler.bind(this)}
+          tweenHandler={(ratio) => ({
+            mainOverlay: {
+              opacity: ratio * 0.7,
+              backgroundColor: 'black'
+            }
+          })}
           tweenDuration={this.state.tweenDuration}
           tweenEasing={this.state.tweenEasing}
           acceptDoubleTap={this.state.acceptDoubleTap}
@@ -134,6 +142,9 @@ export default class DrawerSocial extends Component {
                 <Text style={styles.textTitle}>WeTracker</Text> 
               </Body>
               <Right style={styles.right}>
+                <Button onPress={()=> openSmsUrl('0937233559','This is the text message for me.')}  transparent>
+                  <Icon type="MaterialIcons" style={styles.headerIcon} name="message"  />
+                </Button>
               </Right>
             </Header>
             <Home />

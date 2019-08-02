@@ -20,20 +20,13 @@ export default function App(props) {
     );
   } else {
     return (
-      <View style={styles.container}>
-        {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
         <AppNavigator />
-      </View>
     );
   }
 }
 
 async function loadResourcesAsync() {
   await Promise.all([
-    Asset.loadAsync([
-      require('./assets/images/robot-dev.png'),
-      require('./assets/images/robot-prod.png'),
-    ]),
     Font.loadAsync({
       // This is the font that we are using for our tab bar
       ...Ionicons.font,
@@ -53,10 +46,3 @@ function handleLoadingError(error) {
 function handleFinishLoading(setLoadingComplete) {
   setLoadingComplete(true);
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-});
