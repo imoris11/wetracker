@@ -55,6 +55,7 @@ module.exports = StyleSheet.create({
   },
 
   headerIcon:{
-    color: '#0067C1'
+    color: '#0067C1',
+    fontSize:25
   }
 });

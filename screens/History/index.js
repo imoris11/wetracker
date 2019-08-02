@@ -19,36 +19,36 @@ export default class History extends Component {
 
   _renderItem = ({item, index }) => {
     return (
-      <View style={{margin:20, borderBottomWidth:0.5, borderColor:'lightgrey'}}>
+      <View style={styles.rowContainer}>
       <Text>07:00 am - 20th Feb, 2019</Text>
-      <View style={{flexDirection:'row', marginTop:10}}>
-        <View style={{ width: 20, height:20, borderRadius:10, backgroundColor:'#83E06D', justifyContent:'center', alignItems:'center' }} >
-          <View style={{ width: 10, height:10, borderRadius:5, backgroundColor:'white' }}></View>
+      <View style={styles.secondaryContainer}>
+        <View style={styles.outerCircle} >
+          <View style={styles.innerCircle}></View>
         </View>
           <Text style={{ marginLeft: 10 }}>231, Greek Road, Ilewe ,Iyana Ipaja </Text>
       </View>
 
-      <Text style={{marginLeft:8, fontSize:9, color:'#1481E0'}} >|</Text>
-      <Text style={{marginLeft:8, fontSize:9, color:'#1481E0'}} >|</Text>
+      <Text style={styles.marker} >|</Text>
+      <Text style={styles.marker} >|</Text>
 
       <View style={{flexDirection:'row'}}>
-        <View style={{ width: 20, height:20, borderRadius:10, backgroundColor:'#E0716D', justifyContent:'center', alignItems:'center' }} >
-          <View style={{ width: 10, height:10, borderRadius:5, backgroundColor:'white' }}></View>
+        <View style={styles.secondaryCircle} >
+          <View style={styles.innerCircle}></View>
         </View>
           <Text style={{ marginLeft: 10 }}>11, Waec Bus Stop, Yaba Sango Lagos </Text>
       </View>
-      <View style={{flexDirection:'row', justifyContent:'space-between', margin:20}}>
+      <View style={styles.timeInfo}>
         <View>
-          <Text style={{fontSize:8}} >Distance Travelled</Text>
-          <Text style={{fontSize:12}}>15.50 miles</Text>
+          <Text style={styles.timeHint} >Distance Travelled</Text>
+          <Text style={styles.time}>15.50 miles</Text>
         </View>
         <View>
-          <Text style={{fontSize:8}} >Trip Time</Text>
-          <Text style={{fontSize:12}}>30 - 45 miles</Text>
+          <Text style={styles.timeHint} >Trip Time</Text>
+          <Text style={styles.time}>30 - 45 miles</Text>
         </View>
         <View>
-          <Text style={{fontSize:8}} >Idle Time</Text>
-          <Text style={{fontSize:12}}>15 - 26 minutes</Text>
+          <Text style={styles.timeHint} >Idle Time</Text>
+          <Text style={styles.time}>15 - 26 minutes</Text>
         </View>
 
       </View>
