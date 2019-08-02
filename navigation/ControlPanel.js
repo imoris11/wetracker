@@ -109,8 +109,6 @@ logout = async () => {
               <Text style={styles.rowtxt}>  Logout</Text>
             </View>
           </TouchableOpacity>
-
-         
           </View>
         </Content>
       </Container>

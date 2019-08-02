@@ -44,10 +44,10 @@ export default class App extends Component{
                   key="drawer"
                   contentComponent={DrawerContent}
                 >
-                <Scene  key='home' component={Home} hideNavBar />
-                <Scene key='history' component={History} hideNavBar />
-                <Scene initial key='assets' component={Assets} hideNavBar />
-                <Scene key='settings' component={Settings} hideNavBar />
+                <Scene key='home' component={Home} hideNavBar />
+                <Scene initial key='history' component={History} hideNavBar />
+                <Scene  key='assets' component={Assets} hideNavBar />
+                <Scene  key='settings' component={Settings} hideNavBar />
               </Drawer>
               </Stack>
             </Lightbox>
