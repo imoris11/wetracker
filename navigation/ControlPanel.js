@@ -4,7 +4,7 @@ import {
   Text, 
   TouchableOpacity,
   AsyncStorage, 
-  Alert,
+  FlatList,
   Image 
 } from 'react-native';
 import { Container, Content, Icon } from 'native-base';
@@ -12,18 +12,24 @@ import styles from './styles';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import { openSmsUrl } from '../extra/sms';
 import { Actions } from 'react-native-router-flux';
+import { get as getDevicesApi } from '../extra/api';
 
 export default class ControlPanel extends Component {
   constructor (props){
     super(props);
     this.state = {
-      loggedIn:false
+      loggedIn:false,
+      devices: []
     }
   }
   componentDidMount () {
     this.confirmStatus();
+    this.getDevices();
   }
-
+  getDevices = async () => {
+    let devices = await getDevicesApi('https://tranquil-taiga-94046.herokuapp.com/get_devices')
+    this.setState({ devices });
+  }
   async confirmStatus  () {
     let userId = await AsyncStorage.getItem('user_id');
      if (userId) {
@@ -37,7 +43,16 @@ logout = async () => {
    this.setState({ loggedIn: false});
    Actions.login();
 }
-  
+  _renderItem = ({ item }) => {
+    return (
+      <TouchableOpacity onPress={() => Actions.device({device: item})}>
+        <View style={styles.device}>
+            <Text>{item.title}</Text>
+            <View style={[styles.circle, styles.success]}></View>
+        </View>
+      </TouchableOpacity>
+    )
+  }
   render() {
     return (
       <Container style={styles.container}>
@@ -54,18 +69,11 @@ logout = async () => {
           <View style={styles.deviceAdded}>
               <Text style={styles.userDetailsText}>Device Added</Text>
           </View>
-          <View style={styles.device}>
-            <Text>Ford Edge 2019</Text>
-            <View style={[styles.circle, styles.inactive]}></View>
-          </View>
-          <View style={styles.device}>
-            <Text>Truck</Text>
-            <View style={[styles.circle, styles.sleeping]}></View>
-          </View>
-          <View style={styles.device}>
-            <Text>Power Bike</Text>
-            <View style={[styles.circle, styles.success]}></View>
-          </View>
+          <FlatList 
+            data={this.state.devices}
+            extraData={this.state.data}
+            renderItem={this._renderItem}
+          />
           <TouchableOpacity onPress={Actions.assets} >
             <View style={[styles.listrow, styles.addBorder]}>
               <View style={styles.addContainer}>

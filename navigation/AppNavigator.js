@@ -18,6 +18,7 @@ import Assets from '../screens/Assets';
 import Settings from '../screens/Settings';
 import Geofencing from '../screens/Geofencing';
 import Speed from '../screens/Speed';
+import Device from '../screens/Device';
 
 const reducerCreate = params => {
   const defaultReducer = new Reducer(params);
@@ -39,7 +40,8 @@ export default class App extends Component{
                 hideNavBar
                 key="root"
               >
-                <Scene key='login' initial component={Login} />
+                <Scene key='login' initial  component={Login} />
+                <Scene  key='device' component={Device} hideNavBar />
                 <Drawer
                   hideNavBar
                   key="drawer"
@@ -51,6 +53,7 @@ export default class App extends Component{
                 <Scene  key='settings' component={Settings} hideNavBar />
                 <Scene  key='geofencing' component={Geofencing} hideNavBar />
                 <Scene  key='speed' component={Speed} hideNavBar />
+                
               </Drawer>
               </Stack>
             </Lightbox>
